@@ -1,0 +1,6 @@
+package xmpptoamqp;
+
+message Chat {
+	required string User = 1;
+	required string Text = 2;
+}
