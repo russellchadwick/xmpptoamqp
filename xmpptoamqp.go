@@ -127,13 +127,12 @@ func (as *AmqpService) ConsumeSendCommands(exchange, queue, tag *string) {
 	for {
 		select {
 		case <-as.close:
+			log.Info("AMQP consumer received close signal")
 			return
 		case delivery := <-deliveries:
 			go as.handle(&delivery)
 		}
 	}
-
-	log.Info("AMQP consumer received close signal")
 
 }
 
